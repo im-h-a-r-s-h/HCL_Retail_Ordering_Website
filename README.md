@@ -132,7 +132,7 @@ npm start
 
 ---
 
-## 💡 What I Learned
+## 💡 What We Learned
 
 * Building REST APIs using Spring Boot
 * Database integration with JPA
