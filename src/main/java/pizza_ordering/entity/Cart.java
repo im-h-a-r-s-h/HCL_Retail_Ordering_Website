@@ -1,8 +1,13 @@
 package pizza_ordering.entity;
 
-import jakarta.persistence.*;
-import java.util.List;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import java.util.List;
 
 @Entity
 public class Cart {
@@ -13,12 +18,12 @@ public class Cart {
 
     private Long userId;
 
-    @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL)
-    @JsonManagedReference   // ✅ CORRECT PLACE
+    @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<CartItem> items;
 
-    // Constructors
-    public Cart() {}
+    public Cart() {
+    }
 
     public Cart(Long id, Long userId, List<CartItem> items) {
         this.id = id;
@@ -26,7 +31,6 @@ public class Cart {
         this.items = items;
     }
 
-    // Getters & Setters
     public Long getId() {
         return id;
     }

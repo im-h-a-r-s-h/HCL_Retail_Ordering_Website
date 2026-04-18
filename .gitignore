@@ -40,3 +40,5 @@ Thumbs.db
 
 # Env / secrets
 application.properties
+frontend/node_modules/
+frontend/dist/
